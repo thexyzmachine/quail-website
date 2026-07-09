@@ -1,50 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="description" content="Neural Website"> 
-    <title>Neural</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neural / Quail Mockup</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(90deg, #f4f4f4 0%, #32455c 100%);
+      color: #111;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       TOP NAVBAR
+    ========================= */
+    .navbar-wrap {
+      width: 100%;
+      padding-top: 14px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar {
+      width: 98%;
+      max-width: 1860px;
+      background: #fff;
+      min-height: 70px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* top-right orange contact button */
+    .contact-btn {
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ff5a1f;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+      padding: 12px 14px;
+      text-align: center;
+      min-width: 56px;
+    }
+
+    /* =========================
+       PAGE CONTENT
+    ========================= */
+    .page {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+      padding-bottom: 80px;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      padding-top: 10px;
+    }
+
+    /* logo/title */
+    .brand {
+      text-align: center;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    /* =========================
+       HERO / TOP PRODUCT AREA
+    ========================= */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 56px;
+    }
+
+    .hero-image-box {
+      width: 360px;
+      height: 205px;
+      background: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-image-box img {
+      width: 86%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .orange-btn {
+      display: inline-block;
+      background: #ff5a1f;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 11px 16px;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       SECTION SHARED STYLES
+    ========================= */
+    .section {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto 95px auto;
+      position: relative;
+    }
+
+    .section-line {
+      width: 100%;
+      border-top: 2px solid rgba(20, 20, 20, 0.55);
+      margin-bottom: 18px;
+    }
+
+    .section-topnote {
+      position: absolute;
+      top: 8px;
+      left: 355px;
+      font-size: 8px;
+      letter-spacing: 0.8px;
+      color: rgba(0,0,0,0.28);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .section-body {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      column-gap: 48px;
+      align-items: start;
+    }
+
+    .section-title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .section-text {
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 360px;
+      color: #1a1a1a;
+    }
+
+    /* =========================
+       CORE MISSION SIDE IMAGE
+    ========================= */
+    .core-mission-wrap {
+      position: relative;
+      min-height: 360px;
+    }
+
+    .small-side-image {
+      position: absolute;
+      right: 0;
+      top: 205px;
+      width: 78px;
+      height: 120px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .small-side-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .small-side-btn {
+      position: absolute;
+      right: 0;
+      top: 345px;
+    }
+
+    /* =========================
+       OPEN NEURAL
+    ========================= */
+    .open-neural {
+      margin-top: 24px;
+      margin-bottom: 120px;
+    }
+
+    .open-neural .section-title {
+      font-size: 56px;
+      line-height: 0.95;
+    }
+
+    .open-neural .section-text {
+      max-width: 430px;
+      margin-top: 10px;
+    }
+
+    .open-neural .small-side-btn {
+      top: 6px;
+    }
+
+    /* =========================
+       LOWER TECH LABELS
+    ========================= */
+    .bottom-grid {
+      width: 100%;
+      max-width: 760px;
+      margin: 70px auto 65px auto;
+      position: relative;
+      min-height: 180px;
+    }
+
+    .tiny-label {
+      position: absolute;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: rgba(0,0,0,0.45);
+    }
+
+    .tiny-label.top-right {
+      right: 28px;
+      top: -6px;
+    }
+
+    .tiny-label.bottom-left {
+      left: 26px;
+      bottom: 22px;
+    }
+
+    .center-stack {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 32px;
+      text-align: left;
+      min-width: 240px;
+    }
+
+    .center-stack h3 {
+      font-size: 18px;
+      line-height: 0.95;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .center-stack p {
+      font-size: 8px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .bottom-line {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      border-top: 2px solid rgba(20, 20, 20, 0.55);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media (max-width: 1100px) {
+      .content {
+        padding: 0 24px;
+      }
+
+      .section {
+        max-width: 100%;
+      }
+
+      .section-topnote {
+        position: static;
+        margin-bottom: 8px;
+      }
+
+      .section-body {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+      }
+
+      .hero {
+        flex-direction: column;
+      }
+
+      .core-mission-wrap {
+        min-height: auto;
+        padding-bottom: 180px;
+      }
+
+      .small-side-image {
+        position: static;
+        margin: 30px 0 14px auto;
+      }
+
+      .small-side-btn {
+        position: static;
+        display: inline-block;
+        margin-left: auto;
+      }
+
+      .bottom-grid {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .brand {
+        font-size: 44px;
+      }
+
+      .hero-image-box {
+        width: 100%;
+        max-width: 360px;
+        height: 200px;
+      }
+
+      .section-title,
+      .open-neural .section-title {
+        font-size: 40px;
+      }
+
+      .nav-links {
+        gap: 18px;
+        justify-content: center;
+        padding: 0 90px 0 16px;
+      }
+
+      .contact-btn {
+        right: 14px;
+      }
+
+      .center-stack {
+        position: static;
+        transform: none;
+        margin: 40px auto 0 auto;
+        text-align: left;
+      }
+
+      .tiny-label.top-right,
+      .tiny-label.bottom-left {
+        position: static;
+        display: block;
+        margin: 12px 0;
+      }
+
+      .bottom-grid {
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <a class="active" href="index.html"><span class="custom-style">HOME</span></a>
-        <a href="videos.html"><span class="custom-style">VIDEOS</span></a>
-        <a href="guides.html"><span class="custom-style">GUIDES</span></a>
-        <a href="open_neural.html"><span class="custom-style">OPEN NEURAL</span></a>
-        <a href="contact.html"><span class="custom-style">CONTACT US</span></a>
-        <a href="careers.html"><span class="custom-style">CAREERS</span></a>
-        <a href="bookings.html"><span class="custom-style">BOOK ONLINE</span></a>
+
+  <!-- NAVBAR -->
+  <div class="navbar-wrap">
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">Videos</a>
+        <a href="#">Guides</a>
+        <a href="#">Open Neural</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Book Online</a>
+      </div>
+
+      <a href="#" class="contact-btn">Contact<br>Us</a>
+    </nav>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <main class="page">
+    <div class="content">
+
+      <h1 class="brand">QUAIL</h1>
+
+      <!-- TOP HERO -->
+      <section class="hero">
+        <div class="hero-image-box">
+          <!-- Replace with your own image -->
+          <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80" alt="Speaker / product">
+        </div>
+
+        <a href="#" class="orange-btn">Start Engineering</a>
+      </section>
+
+      <!-- CORE MISSION -->
+      <section class="section core-mission-wrap">
+        <div class="section-line"></div>
+        <div class="section-topnote">System Architecture / Efficiency / Innovation</div>
+
+        <div class="section-body">
+          <h2 class="section-title">CORE<br>MISSION</h2>
+
+          <div class="section-text">
+            Our mission is to make high-quality education free and accessible to every student,
+            empowering everyone to reach their full potential. Our platform combines engaging
+            video lessons, clear conceptual explanations, and a 24/7 AI learning assistant
+            powered by trusted research from leading universities and peer-reviewed sources.
+          </div>
+        </div>
+
+        <div class="small-side-image">
+          <!-- Replace with your own image -->
+          <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80" alt="Device">
+        </div>
+
+        <a href="#" class="orange-btn small-side-btn">Link to AI site</a>
+      </section>
+
+      <!-- OPEN NEURAL -->
+      <section class="section open-neural">
+        <div class="section-line"></div>
+
+        <div class="section-body">
+          <h2 class="section-title">OPEN NEURAL</h2>
+
+          <div class="section-text">
+            Upload PDFs, PowerPoint presentations, and other study materials to instantly
+            generate quizzes, practice tests, flashcards, and personalized learning resources.
+          </div>
+        </div>
+      </section>
+
+      <!-- LOWER SMALL TEXT AREA -->
+      <section class="bottom-grid">
+        <div class="tiny-label top-right">(03) Integrated Control Systems</div>
+
+        <div class="tiny-label bottom-left">(01) Analytical Hardware Node</div>
+
+        <div class="center-stack">
+          <h3>Efficiency Operating<br>System</h3>
+          <p>(02) Cloud Infrastructure Suite</p>
+        </div>
+      </section>
+
+      <div class="bottom-line"></div>
+
     </div>
-    
-    <footer>
-        <p>&copy; 2026 Neural</p>
-    </footer>
+  </main>
+
 </body>
-<style>
-    body {
-    margin: 0;
-    background-image: linear-gradient(90deg, #F4F4F4 0%, #2C3E50 100%);
-    min-height: 100vh;
-}
-    .navbar {
-    background-color: #ffffff;
-    width: 90%;              
-    margin: 30px auto 0;     
-    padding: 50px 40px;      
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-direction: row;
-    box-sizing: border-box;
-}
-    .custom-style {
-  font-family: 'Arial', sans-serif; 
-  font-size: 18px;                           
-  font-weight: bold;               
-  color: #000000;                 
-}
-    
-</style>
 </html>
